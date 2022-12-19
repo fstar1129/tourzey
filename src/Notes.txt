@@ -1,0 +1,86 @@
+PRODUCTION BUILD:
+
+1)Error on:Execution failed for task ':react-native-smart-splash-screen:verifyReleaseResources'.
+
+> java.util.concurrent.ExecutionException: com.android.builder.internal.aapt.v2.Aapt2Exception: 
+Android resource linking failed
+ 
+Solution:
+	similar that: https://github.com/luggit/react-native-config/issues/309
+	React-native-smart-splash-screen:
+
+		Path: 
+		   agentapp\node_modules\react-native-smart-splash-screen\android\build.gradle file
+
+		Build.gradle:
+		android {
+    			compileSdkVersion 23
+    			buildToolsVersion "23.0.3"
+
+    			defaultConfig {
+        			minSdkVersion 16
+        			targetSdkVersion 23
+        			versionCode 1
+        			versionName "1.0"
+    			}
+		}
+		
+		Changed to:
+			compileSdkVersion   -   23 TO 27
+			buildToolsVersion   -   23.0.3 TO 27.0.3
+			targetSdkVersion    -   23 TO 26
+
+2)> Task :app:mergeReleaseResources FAILED 
+[drawable-hdpi-v4/node_modules_reactnavigation_src_views_assets_backicon]
+ E:\reactnative\check\agentapp\android\app\src\main\res\drawable-hdpi\node_modules_reactnavigation_src_views_assets_backicon.png [drawable-hdpi-v4/node_modules_reactnavigation_src_views_assets_backicon] 
+ E:\reactnative\check\agentapp\android\app\build\generated\res\react\release\drawable-hdpi\node_modules_reactnavigation_src_views_assets_backicon.png: Error: Duplicate resources
+
+Solution:
+	Link: https://stackoverflow.com/a/53260522
+
+	In this solution you no need to delete any drawable folder. 
+	Just add the following code in the react.gradle file which you could find under (node_modules/react-native/react.gradle) path
+
+			doLast {
+				def moveFunc = { resSuffix ->
+					File originalDir = file("$buildDir/generated/res/react/release/drawable-${resSuffix}");
+					if (originalDir.exists()) {
+						File destDir = file("$buildDir/../src/main/res/drawable-${resSuffix}");
+						ant.move(file: originalDir, tofile: destDir);
+					}
+				}
+				moveFunc.curry("ldpi").call()
+				moveFunc.curry("mdpi").call()
+				moveFunc.curry("hdpi").call()
+				moveFunc.curry("xhdpi").call()
+				moveFunc.curry("xxhdpi").call()
+				moveFunc.curry("xxxhdpi").call()
+			}
+
+3) react-native-facebook-login:
+What went wrong: Execution failed for task ':react-native-facebook-login:verifyReleaseResources'. 
+> com.android.ide.common.process.ProcessException: Failed to execute aapt
+
+solution: 
+	link: https://github.com/magus/react-native-facebook-login/issues/331#issuecomment-452281933
+	
+	Path: 
+		   agentapp\node_modules\react-native-facebook-login\android\build.gradle file
+
+		Build.gradle:
+		android {
+    			compileSdkVersion 23
+    			buildToolsVersion "23.0.3"
+
+    			defaultConfig {
+        			minSdkVersion 16
+        			targetSdkVersion 23
+        			versionCode 1
+        			versionName "1.0"
+    			}
+		}
+		
+		Changed to:
+			compileSdkVersion   -   23 TO 27
+			buildToolsVersion   -   23.0.3 TO 27.0.3
+			targetSdkVersion    -   23 TO 26

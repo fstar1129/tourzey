@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>667132075785-sgpasblb726oc8d2k7pqo48b12ia4lgp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.667132075785-sgpasblb726oc8d2k7pqo48b12ia4lgp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCk-B3Yu38BSFQQda0RlivLPogbAsDYF1o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>667132075785</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tourzey.tourzey</string>
+	<key>PROJECT_ID</key>
+	<string>tourzey-dev</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tourzey-dev.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:667132075785:ios:e9c406ac6b3f2f10</string>
+	<key>DATABASE_URL</key>
+	<string>https://tourzey-dev.firebaseio.com</string>
+</dict>
+</plist>
